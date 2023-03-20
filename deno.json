@@ -1,0 +1,12 @@
+{
+    "tasks": {
+        "dev": "deno run --watch main.js"
+    },
+    "fmt": {
+        "options": {
+            "indentWidth": 4,
+            "singleQuote": false,
+            "semiColons": true
+        }
+    }
+}
