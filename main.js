@@ -1,5 +1,5 @@
 // Provides LISP-like functional replacements
-// for a handfule of infix arithmetic operations.
+// for a handful of infix arithmetic operations.
 //
 // module: readonly {
 //    neg,
