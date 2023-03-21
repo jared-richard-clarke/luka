@@ -42,6 +42,8 @@ op.mul = binary((x, y) => x * y); // <-------- multiplication
 op.div = binary((x, y) => x / y); // <-------- division
 op.exp = binary((x, y) => x ** y); // <------- exponent
 op.rem = binary((x, y) => x % y); // <-------- remainder
+
+// Folding Operations
 op.sum = monoid((x, y) => x + y, 0); // <----- sum
 op.product = monoid((x, y) => x * y, 1); // <- product
 
