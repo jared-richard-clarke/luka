@@ -45,12 +45,12 @@ Deno.test("test sum", () => {
     // associative
     assertEquals(op.sum(1, 2, 3), op.sum(3, 2, 1));
     // identity
-    assertEquals(op.sum(), 0);
+    assertEquals(op.sum(1, 0), op.sum(0, 1));
 });
 
 Deno.test("test product", () => {
     // associative
     assertEquals(op.product(2, 3, 4), op.product(4, 3, 2));
     // identity
-    assertEquals(op.product(), 1);
+    assertEquals(op.product(1, 2), op.product(2, 1));
 });
