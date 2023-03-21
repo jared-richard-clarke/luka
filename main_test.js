@@ -1,6 +1,13 @@
 import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
 import op from "./main.js";
 
+Deno.test("test negate", () => {
+    // distributive: -(x + y) = -x + -y
+    assertEquals(op.neg(7 + 11), op.neg(7) + op.neg(11));
+    // double negation: --x = x
+    assertEquals(op.neg(op.neg(7)), 7);
+});
+
 Deno.test("test add", () => {
     // commutative: x + y = y + x
     assertEquals(op.add(7, 11), op.add(11, 7));
@@ -37,20 +44,28 @@ Deno.test("test divide", () => {
     assertEquals(op.div(7, 7), 1);
 });
 
-// To-Do:
-// test exponent
-// test remainder
+Deno.test("test exponent", () => {
+    // right associative
+    assertEquals(op.exp(2, op.exp(3, 4)), 2 ** 3 ** 4);
+});
+
+Deno.test("test remainder", () => {
+    // positive dividend
+    assertEquals(op.rem(11, -5), 1);
+    // negative dividend
+    assertEquals(op.rem(-11, 5), -1);
+});
 
 Deno.test("test sum", () => {
     // associative
     assertEquals(op.sum(1, 2, 3), op.sum(3, 2, 1));
     // identity
-    assertEquals(op.sum(1, 0), op.sum(0, 1));
+    assertEquals(op.sum(7), 7);
 });
 
 Deno.test("test product", () => {
     // associative
     assertEquals(op.product(2, 3, 4), op.product(4, 3, 2));
     // identity
-    assertEquals(op.product(1, 2), op.product(2, 1));
+    assertEquals(op.product(7), 7);
 });
