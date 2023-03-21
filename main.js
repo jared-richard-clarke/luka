@@ -36,12 +36,13 @@ const op = Object.create(null);
 op.neg = unary((x) => -x);
 
 // Binary Operations
-op.add = binary((x, y) => x + y); // <-- addition
-op.sub = binary((x, y) => x - y); // <-- subtraction
-op.mul = binary((x, y) => x * y); // <-- multiplication
-op.div = binary((x, y) => x / y); // <-- division
-op.exp = binary((x, y) => x ** y); // <- exponent
-op.rem = binary((x, y) => x % y); // <-- remainder
+op.add = binary((x, y) => x + y); // <----- addition
+op.sub = binary((x, y) => x - y); // <----- subtraction
+op.mul = binary((x, y) => x * y); // <----- multiplication
+op.div = binary((x, y) => x / y); // <----- division
+op.exp = binary((x, y) => x ** y); // <---- exponent
+op.rem = binary((x, y) => x % y); // <----- remainder
+op.equal = binary((x, y) => x === y); // <- equality
 
 // Folding Operations
 op.sum = monoid((x, y) => x + y, 0); // <----- sum
