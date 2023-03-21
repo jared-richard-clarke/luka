@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
-import op from "./main.js";
+import op from "./luka.js";
 
 Deno.test("test negate", () => {
     // distributive: -(x + y) = -x + -y
