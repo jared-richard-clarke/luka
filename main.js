@@ -29,7 +29,7 @@ function monoid(operation, identity) {
 }
 
 // "op" acts as namespace for arithmetic functions.
-// Null prototype prevents namespace pollution.
+// Null prototype prevents namespace pollution from inherited objects.
 const op = Object.create(null);
 
 // Unary Operations
