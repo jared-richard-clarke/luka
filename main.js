@@ -65,12 +65,13 @@ op.mul = binary((x, y) => x * y);
 op.div = binary((x, y) => x / y);
 
 // exp(number, number) -> number
-// Returns the first number to the power of the second number.
+// Returns the first number to the power of the other.
 // exp(2, 8) -> 256
 op.exp = binary((x, y) => x ** y);
 
 // rem(number, number) -> number
-// Returns the remainder of the first number divided by the second number.
+// Returns the remainder of the first number divided by the other.
+// The remainder always has the same sign as the dividend.
 // rem(11, 2) -> 1
 op.rem = binary((x, y) => x % y);
 
