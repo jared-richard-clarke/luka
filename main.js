@@ -1,4 +1,4 @@
-// Module provides LISP-like functional replacements
+// Module provides functional replacements
 // for a handful of infix arithmetic operations.
 
 // Factory function produces unary functions.
