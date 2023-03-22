@@ -23,7 +23,7 @@ const sum = op.sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 | subtraction    | `x - y`      | `sub(x, y)`        |
 | multiplication | `x * y`      | `mul(x, y)`        |
 | division       | `x / y`      | `div(x, y)`        |
-| exponent       | `x ** y`     | `exp(x, y)`        |
+| exponent       | `x ** y`     | `pow(x, y)`        |
 | remainder      | `x % y`      | `rem(x, y)`        |
 | equality       | `x === y`    | `equals(x, y)`     |
 | sum            | `x + y + z`  | `sum(x, y, z)`     |
