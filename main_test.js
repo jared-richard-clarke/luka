@@ -1,4 +1,7 @@
-import { assertStrictEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
+import {
+    assert,
+    assertStrictEquals,
+} from "https://deno.land/std@0.180.0/testing/asserts.ts";
 import op from "./main.js";
 
 Deno.test("negation", () => {
@@ -63,7 +66,7 @@ Deno.test("division", () => {
 Deno.test("exponent", () => {
     // right associative
     assertStrictEquals(
-        op.exp(2, op.exp(3, 4)),
+        op.pow(2, op.pow(3, 4)),
         2 ** 3 ** 4,
         "right associative",
     );
@@ -74,6 +77,18 @@ Deno.test("remainder", () => {
     assertStrictEquals(op.rem(11, -5), 1, "positive dividend");
     // negative dividend
     assertStrictEquals(op.rem(-11, 5), -1, "negative dividend");
+});
+
+Deno.test("equal", () => {
+    const x = 7;
+    const y = 7;
+    const z = 7;
+    // reflexive
+    assert(op.equal(x, x), "reflexive");
+    // symmetric
+    assert(op.equal(x, y) && op.equal(y, x), "symmetric");
+    // transitive
+    assert(op.equal(x, y) && op.equal(y, z) && op.equal(x, z), "transitive");
 });
 
 Deno.test("sum", () => {
