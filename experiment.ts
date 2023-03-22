@@ -32,21 +32,41 @@ function monoid(operation, identity) {
     });
 }
 
+interface Luka {
+    /** negation: changes sign of `x`. */
+    neg: Unary<number>;
+    /** addition: returns sum of `x` and `y`. */
+    add: Binary<number, number>;
+    /** subtraction: returns difference of `x` and `y`. */
+    sub: Binary<number, number>;
+    /** multiplication: returns product of `x` and `y`. */
+    mul: Binary<number, number>;
+    /** division: returns quotient of `x` and `y`. */
+    div: Binary<number, number>;
+    /** exponent: returns base `x` to the power of `y`. */
+    pow: Binary<number, number>;
+    /** remainder: returns the remainder of `x` divided by `y`, where the result always takes the sign of the dividend. */
+    rem: Binary<number, number>;
+    /** equal: checks whether two numbers are equal. */
+    equal: Binary<number, boolean>;
+    /**
+     * sum: returns the sum of `0 - n` numbers.
+     * @example sum(1, 2, 3, 4) -> 10
+     * @example sum() -> 0
+     */
+    sum: Foldable<number>;
+    /**
+     * product: returns the product of `0 - n` numbers.
+     * @example product(1, 2, 3, 4) -> 24
+     * @example product() -> 1
+     */
+    product: Foldable<number>;
+}
+
 // "op" acts as namespace for arithmetic functions.
 // Its null prototype prevents namespace pollution
 // from inherited objects.
-const op: {
-    neg: Unary<number>;
-    add: Binary<number, number>;
-    sub: Binary<number, number>;
-    mul: Binary<number, number>;
-    div: Binary<number, number>;
-    pow: Binary<number, number>;
-    rem: Binary<number, number>;
-    equal: Binary<number, boolean>;
-    sum: Foldable<number>;
-    product: Foldable<number>;
-} = Object.create(null);
+const op: Luka = Object.create(null);
 
 // Unary Operations
 op.neg = unary((x) => -x);
