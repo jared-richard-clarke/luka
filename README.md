@@ -25,6 +25,6 @@ const sum = op.sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 | division       | `x / y`      | `div(x, y)`        |
 | exponent       | `x ** y`     | `pow(x, y)`        |
 | remainder      | `x % y`      | `rem(x, y)`        |
-| equality       | `x === y`    | `equals(x, y)`     |
+| equality       | `x === y`    | `equal(x, y)`      |
 | sum            | `x + y + z`  | `sum(x, y, z)`     |
 | product        | `x * y * z`  | `product(x, y, z)` |
