@@ -1,7 +1,4 @@
 {
-    "tasks": {
-        "dev": "deno run --watch main.js"
-    },
     "fmt": {
         "options": {
             "indentWidth": 4,
