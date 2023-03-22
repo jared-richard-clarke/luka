@@ -37,17 +37,17 @@ const op = Object.create(null);
 op.neg = unary((x) => -x);
 
 // Binary Operations
-op.add = binary((x, y) => x + y); // <----- addition
-op.sub = binary((x, y) => x - y); // <----- subtraction
-op.mul = binary((x, y) => x * y); // <----- multiplication
-op.div = binary((x, y) => x / y); // <----- division
-op.pow = binary((x, y) => x ** y); // <---- exponent
-op.rem = binary((x, y) => x % y); // <----- remainder
-op.equal = binary((x, y) => x === y); // <- equality
+op.add = binary((x, y) => x + y); // <---------- addition
+op.sub = binary((x, y) => x - y); // <---------- subtraction
+op.mul = binary((x, y) => x * y); // <---------- multiplication
+op.div = binary((x, y) => x / y); // <---------- division
+op.pow = binary((x, y) => Math.pow(x, y)); // <- exponent
+op.rem = binary((x, y) => x % y); // <---------- remainder
+op.equal = binary((x, y) => x === y); // <------ equality
 
 // Folding Operations
-op.sum = monoid((x, y) => x + y, 0); // <----- sum
-op.product = monoid((x, y) => x * y, 1); // <- product
+op.sum = monoid((x, y) => x + y, 0); // <------- sum
+op.product = monoid((x, y) => x * y, 1); // <--- product
 
 // Make "op" immutable prior to export.
 export default Object.freeze(op);
