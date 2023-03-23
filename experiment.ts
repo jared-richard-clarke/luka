@@ -22,7 +22,7 @@ function binary(operation) {
     });
 }
 
-// Factory function produces folding functions
+// Factory function that produces folding functions
 // with variable arity — in this case, monoids.
 // A monoid is a set equipped with an associative
 // binary operation and an identity element.
