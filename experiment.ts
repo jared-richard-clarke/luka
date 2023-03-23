@@ -1,5 +1,5 @@
 // Module provides functional replacements
-// for a handful of infix arithmetic operations.
+// for a handful of arithmetic operations.
 
 // Factory function that produces unary functions.
 function unary(operation) {
