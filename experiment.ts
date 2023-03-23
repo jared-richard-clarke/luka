@@ -47,13 +47,13 @@ interface Luka {
     /** equal: checks whether two numbers are equal. */
     equal: (x: number, y: number) => boolean;
     /**
-     * sum: returns the sum of `0 - n` numbers.
+     * sum: returns the sum of `n` numbers.
      * @example sum(1, 2, 3, 4) // -> 10
      * @example sum() // -> 0 (identity)
      */
     sum: (...xs: number[]) => number;
     /**
-     * product: returns the product of `0 - n` numbers.
+     * product: returns the product of `n` numbers.
      * @example product(1, 2, 3, 4) // -> 24
      * @example product() // -> 1 (identity)
      */
