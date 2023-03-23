@@ -1,21 +1,21 @@
 // Module provides functional replacements
 // for a handful of infix arithmetic operations.
 
-// Factory function produces unary functions.
+// Factory function that produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
         return operation(x);
     });
 }
 
-// Factory function produces binary functions.
+// Factory function that produces binary functions.
 function binary(operation) {
     return Object.freeze(function (x, y) {
         return operation(x, y);
     });
 }
 
-// Factory function produces folding functions
+// Factory function that produces folding functions
 // with variable arity — in this case, monoids.
 // A monoid is a set equipped with an associative
 // binary operation and an identity element.
