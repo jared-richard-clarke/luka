@@ -1,6 +1,7 @@
 # Luka
 
-A JavaScript module providing functional replacements for a handful of arithmetic operations.
+A JavaScript module providing functional replacements for a handful of
+arithmetic operations.
 
 ## Examples
 
@@ -16,15 +17,15 @@ const sum = op.sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 ## API
 
-| description    | operators    | luka               |
-| -------------- | ------------ | ------------------ |
-| negation       | `-x`         | `neg(x)`           |
-| addition       | `x + y`      | `add(x, y)`        |
-| subtraction    | `x - y`      | `sub(x, y)`        |
-| multiplication | `x * y`      | `mul(x, y)`        |
-| division       | `x / y`      | `div(x, y)`        |
-| exponent       | `x ** y`     | `pow(x, y)`        |
-| remainder      | `x % y`      | `rem(x, y)`        |
-| equality       | `x === y`    | `equal(x, y)`      |
-| sum            | `x + y + z`  | `sum(x, y, z)`     |
-| product        | `x * y * z`  | `product(x, y, z)` |
+| description                                            | operation   | luka               |
+| ------------------------------------------------------ | ----------- | ------------------ |
+| negation: changes sign of `x`                          | `-x`        | `neg(x)`           |
+| addition: returns sum of `x` and `y`                   | `x + y`     | `add(x, y)`        |
+| subtraction: returns difference of `x` and `y`         | `x - y`     | `sub(x, y)`        |
+| multiplication: returns product of `x` and `y`         | `x * y`     | `mul(x, y)`        |
+| division: returns quotient of `x` and `y`              | `x / y`     | `div(x, y)`        |
+| exponent: returns base `x` to the power of `y`         | `x ** y`    | `pow(x, y)`        |
+| remainder: returns the remainder of `x` divided by `y` | `x % y`     | `rem(x, y)`        |
+| equal: checks whether two numbers are equal            | `x === y`   | `equal(x, y)`      |
+| sum: returns the sum of `0 - n` numbers                | `x + y + z` | `sum(x, y, z)`     |
+| product: returns the product of `0 - n` numbers        | `x * y * z` | `product(x, y, z)` |
