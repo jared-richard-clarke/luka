@@ -48,7 +48,8 @@ interface Luka {
     div: Binary<number, number>;
     /** exponent: returns base `x` to the power of `y`. */
     pow: Binary<number, number>;
-    /** remainder: returns the remainder of `x` divided by `y`, where the result always takes the sign of the dividend. */
+    /** remainder: returns the remainder of `x` divided by `y`,
+     * where the result always takes the sign of the dividend. */
     rem: Binary<number, number>;
     /** equal: checks whether two numbers are equal. */
     equal: Binary<number, boolean>;
