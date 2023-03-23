@@ -8,14 +8,14 @@ type Binary<T, U> = (x: T, y: T) => U;
 /** In this context, an operation that takes `0 - n` arguments and returns an aggregation of those values. */
 type Foldable<T> = (...xs: T[]) => T;
 
-// Factory function produces unary functions.
+// Factory function that produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
         return operation(x);
     });
 }
 
-// Factory function produces binary functions.
+// Factory function that produces binary functions.
 function binary(operation) {
     return Object.freeze(function (x, y) {
         return operation(x, y);
