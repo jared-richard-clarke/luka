@@ -1,13 +1,6 @@
 // Module provides functional replacements
 // for a handful of infix arithmetic operations.
 
-/** An operation with one operand. */
-type Unary<T> = (x: T) => T;
-/** An operation with two operands. */
-type Binary<T, U> = (x: T, y: T) => U;
-/** In this context, an operation that takes `0 - n` arguments and returns an aggregation of those values. */
-type Foldable<T> = (...xs: T[]) => T;
-
 // Factory function that produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
@@ -37,34 +30,34 @@ function monoid(operation, identity) {
 
 interface Luka {
     /** negation: changes sign of `x`. */
-    neg: Unary<number>;
+    neg: (x: number) => number;
     /** addition: returns sum of `x` and `y`. */
-    add: Binary<number, number>;
+    add: (x: number, y: number) => number;
     /** subtraction: returns difference of `x` and `y`. */
-    sub: Binary<number, number>;
+    sub: (x: number, y: number) => number;
     /** multiplication: returns product of `x` and `y`. */
-    mul: Binary<number, number>;
+    mul: (x: number, y: number) => number;
     /** division: returns quotient of `x` and `y`. */
-    div: Binary<number, number>;
+    div: (x: number, y: number) => number;
     /** exponent: returns base `x` to the power of `y`. */
-    pow: Binary<number, number>;
+    pow: (x: number, y: number) => number;
     /** remainder: returns the remainder of `x` divided by `y`,
      * where the result always takes the sign of the dividend. */
-    rem: Binary<number, number>;
+    rem: (x: number, y: number) => number;
     /** equal: checks whether two numbers are equal. */
-    equal: Binary<number, boolean>;
+    equal: (x: number, y: number) => boolean;
     /**
      * sum: returns the sum of `0 - n` numbers.
      * @example sum(1, 2, 3, 4) -> 10
      * @example sum() -> 0
      */
-    sum: Foldable<number>;
+    sum: (...xs: number[]) => number;
     /**
      * product: returns the product of `0 - n` numbers.
      * @example product(1, 2, 3, 4) -> 24
      * @example product() -> 1
      */
-    product: Foldable<number>;
+    product: (...xs: number[]) => number;
 }
 
 // "op" acts as namespace for arithmetic functions.
