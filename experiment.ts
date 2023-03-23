@@ -1,8 +1,11 @@
 // Module provides functional replacements
 // for a handful of infix arithmetic operations.
 
+/** An operation with one operand. */
 type Unary<T> = (x: T) => T;
+/** An operation with two operands. */
 type Binary<T, U> = (x: T, y: T) => U;
+/** In this context, an operation that takes `0 - n` arguments and returns an aggregation of those values. */
 type Foldable<T> = (...xs: T[]) => T;
 
 // Factory function produces unary functions.
