@@ -44,7 +44,7 @@ interface Luka {
     /** remainder: returns the remainder of `x` divided by `y`,
      * where the result always takes the sign of the dividend. */
     rem: (x: number, y: number) => number;
-    /** equal: checks whether two numbers are equal. */
+    /** equal: checks whether `x` and `y` are equal. */
     equal: (x: number, y: number) => boolean;
     /**
      * sum: returns the sum of `n` numbers.
