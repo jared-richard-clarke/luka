@@ -26,6 +26,6 @@ const sum = op.sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 | **division**: returns quotient of `x` and `y`              | `x / y`     | `div(x, y)`        |
 | **exponent**: returns base `x` to the power of `y`         | `x ** y`    | `pow(x, y)`        |
 | **remainder**: returns the remainder of `x` divided by `y` | `x % y`     | `rem(x, y)`        |
-| **equal**: checks whether `x` and `y` are equal            | `x === y`   | `equal(x, y)`      |
+| **equality**: checks whether `x` and `y` are equal         | `x === y`   | `equal(x, y)`      |
 | **sum**: returns the sum of `n` numbers                    | `x + y + z` | `sum(x, y, z)`     |
 | **product**: returns the product of `n` numbers            | `x * y * z` | `product(x, y, z)` |
