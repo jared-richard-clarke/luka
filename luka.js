@@ -31,39 +31,7 @@ function monoid(operation, identity) {
 // "op" acts as namespace for arithmetic functions.
 // Its null prototype prevents namespace pollution
 // from inherited objects.
-const op: {
-    /** **negation**: changes sign of `x` */
-    neg: (x: number) => number;
-    /** **addition**: returns sum of `x` and `y` */
-    add: (x: number, y: number) => number;
-    /** **subtraction**: returns difference of `x` and `y` */
-    sub: (x: number, y: number) => number;
-    /** **multiplication**: returns product of `x` and `y` */
-    mul: (x: number, y: number) => number;
-    /** **division**: returns quotient of `x` and `y` */
-    div: (x: number, y: number) => number;
-    /** **exponent**: returns base `x` to the power of `y` */
-    pow: (x: number, y: number) => number;
-    /** **remainder**: returns remainder of `x` divided by `y` */
-    rem: (x: number, y: number) => number;
-    /** **equality**: checks whether `x` and `y` are equal */
-    equal: (x: number, y: number) => boolean;
-    /**
-     * **sum**: returns sum of `n` numbers
-     * ```js
-     * sum(1, 2, 3) // -> 6
-     * sum()        // -> 0 (identity)
-     * ```
-     */
-    sum: (...xs: number[]) => number;
-    /**
-     * **product**: returns product of `n` numbers
-     * ```js
-     * product(2, 3, 4) // -> 24
-     * product()        // -> 1 (identity)
-     * ``` */
-    product: (...xs: number[]) => number;
-} = Object.create(null);
+const op = Object.create(null);
 
 // Unary Operations
 op.neg = unary((x) => -x);
