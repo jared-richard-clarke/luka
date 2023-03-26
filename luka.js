@@ -34,7 +34,7 @@ function monoid(operation, identity) {
 const op = Object.create(null);
 
 // Unary Operations
-op.neg = unary((x) => -x);
+op.neg = unary((x) => -x); // <----------------- negation
 
 // Binary Operations
 op.add = binary((x, y) => x + y); // <---------- addition
@@ -51,3 +51,4 @@ op.product = monoid((x, y) => x * y, 1); // <--- product
 
 // Make "op" immutable prior to export.
 export default Object.freeze(op);
+
