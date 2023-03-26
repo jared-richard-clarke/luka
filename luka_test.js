@@ -2,7 +2,7 @@ import {
     assert,
     assertStrictEquals,
 } from "https://deno.land/std@0.180.0/testing/asserts.ts";
-import op from "./luka.ts";
+import op from "./luka.js";
 
 Deno.test("negation", () => {
     // distributive: -(x + y) = -x + -y
