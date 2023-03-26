@@ -2,6 +2,7 @@
 // for a handful of arithmetic operations.
 
 // Factory function that produces unary functions.
+// Makes functions immutable.
 function unary(operation) {
     return Object.freeze(function (x) {
         return operation(x);
@@ -9,6 +10,7 @@ function unary(operation) {
 }
 
 // Factory function that produces binary functions.
+// Makes functions immutable.
 function binary(operation) {
     return Object.freeze(function (x, y) {
         return operation(x, y);
@@ -51,4 +53,3 @@ op.product = monoid((x, y) => x * y, 1); // <--- product
 
 // Make "op" immutable prior to export.
 export default Object.freeze(op);
-
