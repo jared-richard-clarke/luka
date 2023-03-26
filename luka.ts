@@ -44,12 +44,12 @@ const op: {
     div: (x: number, y: number) => number;
     /** **exponent**: returns base `x` to the power of `y` */
     pow: (x: number, y: number) => number;
-    /** **remainder**: returns the remainder of `x` divided by `y` */
+    /** **remainder**: returns remainder of `x` divided by `y` */
     rem: (x: number, y: number) => number;
     /** **equality**: checks whether `x` and `y` are equal */
     equal: (x: number, y: number) => boolean;
     /**
-     * **sum**: returns the sum of `n` numbers
+     * **sum**: returns sum of `n` numbers
      * ```js
      * sum(1, 2, 3) // -> 6
      * sum()        // -> 0 (identity)
@@ -57,7 +57,7 @@ const op: {
      */
     sum: (...xs: number[]) => number;
     /**
-     * **product**: returns the product of `n` numbers
+     * **product**: returns product of `n` numbers
      * ```js
      * product(2, 3, 4) // -> 24
      * product()        // -> 1 (identity)
