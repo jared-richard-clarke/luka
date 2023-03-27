@@ -8,11 +8,23 @@ arithmetic operations.
 ```javascript
 import op from "./luka.js";
 
-const infix = 1 + 2 * 3;
+// Unary Operations
+const negation         = op.neg(7) // ----------->   -7
 
-const prefix = op.add(1, op.mul(2, 3));
+// Binary Operations
+const addition         = op.add(1, 6) // -------->    7
+const subtraction      = op.sub(8, 1) // -------->    7
+const multiplication   = op.mul(2, 7) // -------->   14
+const division         = op.div(14, 2) // ------->    7
+const exponent         = op.pow(2, 7) // -------->  128
+const remainder        = op.rem(15, 7) // ------->    1
+const equal            = op.equal(7, 7) // ------> true
 
-const sum = op.sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+// Folding Operations
+const sum              = op.sum(1, 2, 3) // ----->    6
+const sum_identity     = op.sum() // ------------>    0
+const product          = op.product(2, 2, 2) // ->    8
+const product_identity = op.product() // -------->    1
 ```
 
 ## API
