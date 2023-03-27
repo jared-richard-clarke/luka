@@ -3,7 +3,7 @@
 A JavaScript module providing functional replacements for a handful of
 arithmetic operations.
 
-## Examples
+## API
 
 ```javascript
 import op from "./luka.js";
@@ -26,18 +26,3 @@ const sum_identity     = op.sum() // ------------>    0
 const product          = op.product(2, 2, 2) // ->    8
 const product_identity = op.product() // -------->    1
 ```
-
-## API
-
-| operation         | `luka.js`               |
-| ----------------- | ----------------------- |
-| `-x`              | `neg(x)`                |
-| `x + y`           | `add(x, y)`             |
-| `x - y`           | `sub(x, y)`             |
-| `x * y`           | `mul(x, y)`             |
-| `x / y`           | `div(x, y)`             |
-| `x ** y`          | `pow(x, y)`             |
-| `x % y`           | `rem(x, y)`             |
-| `x === y`         | `equal(x, y)`           |
-| `x + y + z + ...` | `sum(x, y, z, ...)`     |
-| `x * y * z * ...` | `product(x, y, z, ...)` |
