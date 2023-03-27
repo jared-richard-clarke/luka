@@ -21,6 +21,7 @@ function binary(operation) {
 // with variable arity — in this case, monoids.
 // A monoid is a set equipped with an associative
 // binary operation and an identity element.
+// Makes functions immutable.
 function monoid(operation, identity) {
     return Object.freeze(function (...operands) {
         return operands.reduce(
@@ -51,5 +52,31 @@ op.equal = binary((x, y) => x === y); // <------ equality
 op.sum = monoid((x, y) => x + y, 0); // <------- sum
 op.product = monoid((x, y) => x * y, 1); // <--- product
 
-// Make "op" immutable prior to export.
+/**
+ * Module `luka.js` provides functional replacements
+ * for a handful of arithmetic operations.
+ *
+ * @example
+ * ```js
+ * import op from "./luka.js";
+ *
+ * // Unary Operations
+ * const negation         = op.neg(7) // ----------->   -7
+ * 
+ * // Binary Operations
+ * const addition         = op.add(1, 6) // -------->    7
+ * const subtraction      = op.sub(8, 1) // -------->    7
+ * const multiplication   = op.mul(2, 7) // -------->   14
+ * const division         = op.div(14, 2) // ------->    7
+ * const exponent         = op.pow(2, 7) // -------->  128
+ * const remainder        = op.rem(15, 7) // ------->    1
+ * const equal            = op.equal(7, 7) // ------> true
+ * 
+ * // Folding Operations
+ * const sum              = op.sum(1, 2, 3) // ----->    6
+ * const sum_identity     = op.sum() // ------------>    0
+ * const product          = op.product(2, 2, 2) // ->    8
+ * const product_identity = op.product() // -------->    1
+ * ```
+ */
 export default Object.freeze(op);
