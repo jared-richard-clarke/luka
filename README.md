@@ -16,7 +16,7 @@ const addition         = op.add(1, 6) // -------->    7
 const subtraction      = op.sub(8, 1) // -------->    7
 const multiplication   = op.mul(2, 7) // -------->   14
 const division         = op.div(14, 2) // ------->    7
-const exponent         = op.pow(2, 7) // -------->  128
+const power            = op.pow(2, 7) // -------->  128
 const remainder        = op.rem(15, 7) // ------->    1
 const equal            = op.equal(7, 7) // ------> true
 
