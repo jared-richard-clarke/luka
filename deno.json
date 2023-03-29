@@ -1,5 +1,8 @@
 {
     "fmt": {
+        "files": {
+            "exclude": ["./README.md"]
+        },
         "options": {
             "indentWidth": 4,
             "singleQuote": false,
