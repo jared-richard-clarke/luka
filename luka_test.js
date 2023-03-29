@@ -84,11 +84,11 @@ Deno.test("equal", () => {
     const y = 7;
     const z = 7;
     // reflexive
-    assert(op.equal(x, x), "reflexive");
+    assert(op.eq(x, x), "reflexive");
     // symmetric
-    assert(op.equal(x, y) && op.equal(y, x), "symmetric");
+    assert(op.eq(x, y) && op.eq(y, x), "symmetric");
     // transitive
-    assert(op.equal(x, y) && op.equal(y, z) && op.equal(x, z), "transitive");
+    assert(op.eq(x, y) && op.eq(y, z) && op.eq(x, z), "transitive");
 });
 
 Deno.test("sum", () => {
