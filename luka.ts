@@ -100,18 +100,14 @@ op.product = monoid((x, y) => x * y, 1);
  *
  * @example
  * ```ts
- * import op from "./luka.ts";
+ * import { add, eq, mul } from "./luka.ts";
  * import { assert } from "https://deno.land/std@0.180.0/testing/asserts.ts";
  *
- * function square(x: number): number {
- *    return op.mul(x, x);
- * }
- *
  * function hypotenuse(x: number, y: number): number {
- *    return Math.sqrt(op.add(square(x), square(y)));
+ *    return Math.sqrt(add(mul(x, x), mul(y, y)));
  * }
  *
- * assert(op.eq(hypotenuse(3, 4), 5));
+ * assert(eq(hypotenuse(3, 4), 5));
  * ```
  */
 export default Object.freeze(op);
