@@ -87,7 +87,7 @@ Deno.test("equality", () => {
     // transitive
     assert(op.eq(x, y) && op.eq(y, z) && op.eq(x, z), "transitive");
     // boolean inverses
-    assertStrictEquals(op.eq(x, x), !op.ne(x, x), "equal vs. not not-equal");
+    assertStrictEquals(op.eq(x, x), !op.ne(x, x), "equal vs. not-equal");
     assertStrictEquals(
         op.lt(x, x),
         !op.ge(x, x),
