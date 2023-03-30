@@ -1,7 +1,7 @@
 import {
     assert,
     assertStrictEquals,
-} from "https://deno.land/std@0.180.0/testing/asserts.ts";
+} from "../deps.ts";
 import op from "../luka.ts";
 
 Deno.test("negation", () => {
