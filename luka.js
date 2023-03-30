@@ -1,6 +1,3 @@
-// Module provides functional replacements
-// for a handful of arithmetic operations.
-
 // Factory function that produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
@@ -61,18 +58,14 @@ op.product = monoid((x, y) => x * y, 1);
  *
  * @example
  * ```js
- * import op from "./luka.js";
+ * import { add, eq, mul } from "./luka.js";
  * import { assert } from "https://deno.land/std@0.180.0/testing/asserts.ts";
  *
- * function square(x) {
- *    return op.mul(x, x);
- * }
- *
  * function hypotenuse(x, y) {
- *    return Math.sqrt(op.add(square(x), square(y)));
+ *    return Math.sqrt(add(mul(x, x), mul(y, y)));
  * }
  *
- * assert(op.eq(hypotenuse(3, 4), 5));
+ * assert(eq(hypotenuse(3, 4), 5));
  * ```
  */
 export default Object.freeze(op);
