@@ -19,6 +19,8 @@ const multiplication   = op.mul(2, 7) // -------->    14
 const division         = op.div(14, 2) // ------->     7
 const power            = op.pow(2, 7) // -------->   128
 const remainder        = op.rem(15, 7) // ------->     1
+
+// Binary Boolean Operations
 const equal            = op.eq(7, 7) // --------->  true
 const not_equal        = op.ne(7, 7) // ---------> false
 const less             = op.lt(7, 11) // -------->  true
