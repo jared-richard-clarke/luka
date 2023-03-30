@@ -1,4 +1,7 @@
 {
+    "compilerOptions": {
+        "noImplicitAny": false
+    },
     "fmt": {
         "files": {
             "exclude": ["./README.md"]
