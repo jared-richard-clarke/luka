@@ -41,6 +41,8 @@ op.mul = binary((x, y) => x * y);
 op.div = binary((x, y) => x / y);
 op.pow = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
+
+// Binary Boolean Operations
 op.eq = binary((x, y) => x === y);
 op.ne = binary((x, y) => x !== y);
 op.lt = binary((x, y) => x < y);
@@ -58,14 +60,14 @@ op.product = monoid((x, y) => x * y, 1);
  *
  * @example
  * ```js
- * import { add, eq, mul } from "./luka.js";
+ * import op from "./luka.js";
  * import { assert } from "https://deno.land/std@0.180.0/testing/asserts.ts";
  *
  * function hypotenuse(x, y) {
- *    return Math.sqrt(add(mul(x, x), mul(y, y)));
+ *    return Math.sqrt(op.add(op.mul(x, x), op.mul(y, y)));
  * }
  *
- * assert(eq(hypotenuse(3, 4), 5));
+ * assert(op.eq(hypotenuse(3, 4), 5));
  * ```
  */
 export default Object.freeze(op);
