@@ -113,3 +113,11 @@ Deno.test("product", () => {
     // identity
     assertStrictEquals(op.product(7), 7, "identity");
 });
+
+Deno.test("floating point imprecision", () => {
+    const x = 0.1;
+    const y = 0.3;
+    const z = 0.4;
+    assert(op.eq(op.add(x, y), z) && op.ne(op.sub(z, y), x), "non-reflexive");
+    assert(op.ne(NaN, NaN), "not a number");
+});
