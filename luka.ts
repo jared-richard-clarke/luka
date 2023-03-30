@@ -1,6 +1,3 @@
-// Module provides functional replacements
-// for a handful of arithmetic operations.
-
 // Factory function that produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
@@ -30,17 +27,17 @@ function monoid(operation, identity) {
 
 /**
  * Generic type alias for unary functions.
- * `T`: input, `U`: output
+ * `T` = input, `U` = output
  */
 type Unary<T, U> = (x: T) => U;
 /**
  * Generic type alias for binary functions.
- * `T`: input, `U`: output
+ * `T` = input, `U` = output
  */
 type Binary<T, U> = (x: T, y: T) => U;
 /**
  * Generic type alias for folding functions.
- * `T`: input, `U`: output
+ * `T` = input, `U` = output
  */
 type Fold<T, U> = (...xs: T[]) => U;
 
