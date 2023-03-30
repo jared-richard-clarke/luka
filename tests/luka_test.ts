@@ -1,7 +1,4 @@
-import {
-    assert,
-    assertStrictEquals,
-} from "../deps.ts";
+import { assert, assertStrictEquals } from "../deps.ts";
 import op from "../luka.ts";
 
 Deno.test("negation", () => {
@@ -79,16 +76,28 @@ Deno.test("remainder", () => {
     assertStrictEquals(op.rem(-11, 5), -1, "negative dividend");
 });
 
-Deno.test("equal", () => {
+Deno.test("equality", () => {
     const x = 7;
-    const y = 7;
-    const z = 7;
+    const y = 6 + 1;
+    const z = 14 / 2;
     // reflexive
     assert(op.eq(x, x), "reflexive");
     // symmetric
     assert(op.eq(x, y) && op.eq(y, x), "symmetric");
     // transitive
     assert(op.eq(x, y) && op.eq(y, z) && op.eq(x, z), "transitive");
+    // boolean inverses
+    assertStrictEquals(op.eq(x, x), !op.ne(x, x), "equal vs. not not-equal");
+    assertStrictEquals(
+        op.lt(x, x),
+        !op.ge(x, x),
+        "less than vs. greater than or equal",
+    );
+    assertStrictEquals(
+        op.le(x, x),
+        !op.gt(x, x),
+        "less than or equal vs. greater than",
+    );
 });
 
 Deno.test("sum", () => {
