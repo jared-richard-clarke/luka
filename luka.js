@@ -19,9 +19,7 @@ function binary(operation) {
 function monoid(operation, identity) {
     return Object.freeze(function (...operands) {
         return operands.reduce(
-            function (total, operand) {
-                return operation(total, operand);
-            },
+            (total, operand) => operation(total, operand),
             identity,
         );
     });
@@ -33,60 +31,28 @@ function monoid(operation, identity) {
 const op = Object.create(null);
 
 // Unary Operations
-op.neg = unary(function (x) {
-    return -x;
-});
-op.not = unary(function (x) {
-    return !x;
-});
+op.neg = unary((x) => -x);
+op.not = unary((x) => !x);
 
 // Binary Operations
-op.add = binary(function (x, y) {
-    return x + y;
-});
-op.sub = binary(function (x, y) {
-    return x - y;
-});
-op.mul = binary(function (x, y) {
-    return x * y;
-});
-op.div = binary(function (x, y) {
-    return x / y;
-});
-op.pow = binary(function (x, y) {
-    return Math.pow(x, y);
-});
-op.rem = binary(function (x, y) {
-    return x % y;
-});
+op.add = binary((x, y) => x + y);
+op.sub = binary((x, y) => x - y);
+op.mul = binary((x, y) => x * y);
+op.div = binary((x, y) => x / y);
+op.pow = binary((x, y) => Math.pow(x, y));
+op.rem = binary((x, y) => x % y);
 
 // Binary Boolean Operations
-op.eq = binary(function (x, y) {
-    return x === y;
-});
-op.ne = binary(function (x, y) {
-    return x !== y;
-});
-op.lt = binary(function (x, y) {
-    return x < y;
-});
-op.le = binary(function (x, y) {
-    return x <= y;
-});
-op.gt = binary(function (x, y) {
-    return x > y;
-});
-op.ge = binary(function (x, y) {
-    return x >= y;
-});
+op.eq = binary((x, y) => x === y);
+op.ne = binary((x, y) => x !== y);
+op.lt = binary((x, y) => x < y);
+op.le = binary((x, y) => x <= y);
+op.gt = binary((x, y) => x > y);
+op.ge = binary((x, y) => x >= y);
 
 // Folding Operations
-op.sum = monoid(function (x, y) {
-    return x + y;
-}, 0);
-op.product = monoid(function (x, y) {
-    return x * y;
-}, 1);
+op.sum = monoid((x, y) => x + y, 0);
+op.product = monoid((x, y) => x * y, 1);
 
 /**
  * Module `luka.js` provides functional replacements
