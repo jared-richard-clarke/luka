@@ -1,13 +1,4 @@
-.env
-
-/.cargo_home/
-/.idea/
-/.vs/
-/.vscode/
-
-/node_modules
-/tsconfig.json
-
-# MacOS generated files
 .DS_Store
-.DS_Store?
+.idea
+.vscode/settings.json
+deno.lock
