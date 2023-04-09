@@ -1,5 +1,3 @@
-/// <reference types="./luka.d.ts" />
-
 "use strict";
 
 // Factory function that produces unary functions.
