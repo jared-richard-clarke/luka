@@ -1,5 +1,3 @@
-"use strict";
-
 // Factory function that produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
