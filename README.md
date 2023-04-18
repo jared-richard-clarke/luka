@@ -3,6 +3,24 @@
 A JavaScript module providing functional replacements for a handful of
 arithmetic operations.
 
+## Background
+
+A binary operation is a rule for combining two values to create another. In arithmetic, 
+the preferred syntax for binary operations is infix notation, where the operator sits 
+between its operands.
+
+But infix syntax is ambiguous. It's unclear whether `1 + 2 * 3` evaluates to `(1 + 2) * 3` 
+or `1 + (2 * 3)`. Mathematicians use a set of conventions, the order of operations, to resolve 
+this ambiguity.
+
+The order of operations, however, is arbitrary. It varies from person to person and region to region. 
+Many programming languages come with their own precedence tables — each subtly different from the other.
+
+In JavaScript, I prefer to sidestep these ambiguities by using function application. 
+JavaScript functions evaluate their arguments inward to outward precisely when they are called. 
+`1 + 2 * 3` becomes `add(1, mul(2, 3))`. This notation is perhaps uglier but definitely 
+more explicit.
+
 ## API
 
 ```js
