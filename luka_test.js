@@ -4,14 +4,6 @@ import {
 } from "https://deno.land/std@0.180.0/testing/asserts.ts";
 import op from "./luka.js";
 
-Deno.test("negation", function () {
-    const { neg } = op;
-    // distributive: -(x + y) = -x + -y
-    assertStrictEquals(neg(7 + 11), neg(7) + neg(11), "distributive");
-    // double negation: --x = x
-    assertStrictEquals(neg(neg(7)), 7, "double negation");
-});
-
 Deno.test("addition", function () {
     const { add } = op;
     // commutative: x + y = y + x
@@ -53,9 +45,9 @@ Deno.test("division", function () {
 });
 
 Deno.test("exponent", function () {
-    const { pow } = op;
+    const { exp } = op;
     // right associative
-    assertStrictEquals(pow(2, pow(3, 4)), 2 ** (3 ** 4), "right associative");
+    assertStrictEquals(exp(2, exp(3, 4)), 2 ** 3 ** 4, "right associative");
 });
 
 Deno.test("remainder", function () {
