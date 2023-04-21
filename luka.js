@@ -38,7 +38,7 @@ op.add = binary((x, y) => x + y);
 op.sub = binary((x, y) => x - y);
 op.mul = binary((x, y) => x * y);
 op.div = binary((x, y) => x / y);
-op.pow = binary((x, y) => Math.pow(x, y));
+op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 op.equal = binary((x, y) => x === y);
 
@@ -62,9 +62,9 @@ op.product = monoid((x, y) => x * y, 1);
  * const subtraction      = op.sub(8, 1) // -------->     7
  * const multiplication   = op.mul(2, 7) // -------->    14
  * const division         = op.div(14, 2) // ------->     7
- * const power            = op.pow(2, 7) // -------->   128
+ * const exponent         = op.exp(2, 7) // -------->   128
  * const remainder        = op.rem(15, 7) // ------->     1
- * const equal            = op.equal(7, 7) // ------>  true
+ * const equality         = op.equal(7, 7) // ------>  true
  *
  * // Folding Operations
  * const sum              = op.sum(1, 2, 3) // ----->     6
