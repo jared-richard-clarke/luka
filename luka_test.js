@@ -67,7 +67,7 @@ Deno.test("exponent", function () {
     // right associative
     assertStrictEquals(
         op.pow(2, op.pow(3, 4)),
-        2 ** 3 ** 4,
+        2 ** (3 ** 4),
         "right associative",
     );
 });
