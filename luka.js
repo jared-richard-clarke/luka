@@ -1,10 +1,3 @@
-// Factory function that produces unary functions.
-function unary(operation) {
-    return Object.freeze(function (x) {
-        return operation(x);
-    });
-}
-
 // Factory function that produces binary functions.
 function binary(operation) {
     return Object.freeze(function (x, y) {
@@ -30,9 +23,6 @@ function monoid(operation, identity) {
 // from inherited objects.
 const op = Object.create(null);
 
-// Unary Operations
-op.neg = unary((x) => -x);
-
 // Binary Operations
 op.add = binary((x, y) => x + y);
 op.sub = binary((x, y) => x - y);
@@ -48,14 +38,11 @@ op.product = monoid((x, y) => x * y, 1);
 
 /**
  * Module `luka.js` provides functional replacements
- * for a handful of arithmetic operations.
+ * for a handful of infix arithmetic operations.
  *
  * @example
  * ```js
  * import op from "./luka.js";
- *
- * // Unary Operations
- * const negation         = op.neg(7) // ----------->    -7
  *
  * // Binary Operations
  * const addition         = op.add(1, 6) // -------->     7
