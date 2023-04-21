@@ -1,6 +1,6 @@
 # Luka
 
-Module `luka` provide functional replacements for a handful of infix
+Module `luka` provides functional replacements for a handful of infix
 arithmetic operations: [ `+`, `-`, `*`, `/`, `**`, `%`, `===`].
 
 ## Background
