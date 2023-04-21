@@ -5,122 +5,101 @@ import {
 import op from "./luka.js";
 
 Deno.test("negation", function () {
+    const { neg } = op;
     // distributive: -(x + y) = -x + -y
-    assertStrictEquals(op.neg(7 + 11), op.neg(7) + op.neg(11), "distributive");
+    assertStrictEquals(neg(7 + 11), neg(7) + neg(11), "distributive");
     // double negation: --x = x
-    assertStrictEquals(op.neg(op.neg(7)), 7, "double negation");
+    assertStrictEquals(neg(neg(7)), 7, "double negation");
 });
 
 Deno.test("addition", function () {
+    const { add } = op;
     // commutative: x + y = y + x
-    assertStrictEquals(op.add(7, 11), op.add(11, 7), "commutative");
+    assertStrictEquals(add(7, 11), add(11, 7), "commutative");
     // associative: (x + y) + z = x + (y + z)
-    assertStrictEquals(
-        op.add(1, op.add(2, 3)),
-        op.add(op.add(1, 2), 3),
-        "associative",
-    );
+    assertStrictEquals(add(1, add(2, 3)), add(add(1, 2), 3), "associative");
     // distributive: x * (y + z) = (x * y) + (x * z)
-    assertStrictEquals(2 * op.add(3, 4), op.add(2 * 3, 2 * 4), "distributive");
+    assertStrictEquals(2 * add(3, 4), add(2 * 3, 2 * 4), "distributive");
     // identity: x + 0 = x
-    assertStrictEquals(op.add(7, 0), 7, "identity");
+    assertStrictEquals(add(7, 0), 7, "identity");
 });
 
 Deno.test("subtraction", function () {
+    const { sub } = op;
     // distributive: x * (y - z) = (x * y) - (x * z)
-    assertStrictEquals(
-        2 * op.sub(11, 7),
-        op.sub(2 * 11, 2 * 7),
-        "distributive",
-    );
+    assertStrictEquals(2 * sub(11, 7), sub(2 * 11, 2 * 7), "distributive");
     // identity: x - 0 = x
-    assertStrictEquals(op.sub(7, 0), 7, "identity");
+    assertStrictEquals(sub(7, 0), 7, "identity");
 });
 
 Deno.test("multiplication", function () {
+    const { mul } = op;
     // commutative: x * y = y * x
-    assertStrictEquals(op.mul(2, 7), op.mul(7, 2), "commutative");
+    assertStrictEquals(mul(2, 7), mul(7, 2), "commutative");
     // associative: (x * y) * z = x * (y * z)
-    assertStrictEquals(
-        op.mul(op.mul(3, 4), 5),
-        op.mul(3, op.mul(4, 5)),
-        "associative",
-    );
+    assertStrictEquals(mul(mul(3, 4), 5), mul(3, mul(4, 5)), "associative");
     // distributive: x * (y + z) = (x * y) + (x * z)
-    assertStrictEquals(
-        op.mul(2, 7 + 11),
-        op.mul(2, 7) + op.mul(2, 11),
-        "distributive",
-    );
+    assertStrictEquals(mul(2, 7 + 11), mul(2, 7) + mul(2, 11), "distributive");
     // identity: x * 1 = x
-    assertStrictEquals(op.mul(7, 1), 7, "identity");
+    assertStrictEquals(mul(7, 1), 7, "identity");
 });
 
 Deno.test("division", function () {
+    const { div } = op;
     // identity: x / 1 = x
-    assertStrictEquals(op.div(7, 1), 7, "identity");
+    assertStrictEquals(div(7, 1), 7, "identity");
     // divide by self: x / x = 1
-    assertStrictEquals(op.div(7, 7), 1, "divide by self");
+    assertStrictEquals(div(7, 7), 1, "divide by self");
 });
 
 Deno.test("exponent", function () {
+    const { pow } = op;
     // right associative
-    assertStrictEquals(
-        op.pow(2, op.pow(3, 4)),
-        2 ** (3 ** 4),
-        "right associative",
-    );
+    assertStrictEquals(pow(2, pow(3, 4)), 2 ** (3 ** 4), "right associative");
 });
 
 Deno.test("remainder", function () {
+    const { rem } = op;
     // positive dividend
-    assertStrictEquals(op.rem(11, -5), 1, "positive dividend");
+    assertStrictEquals(rem(11, -5), 1, "positive dividend");
     // negative dividend
-    assertStrictEquals(op.rem(-11, 5), -1, "negative dividend");
+    assertStrictEquals(rem(-11, 5), -1, "negative dividend");
 });
 
 Deno.test("equality", function () {
+    const { equal } = op;
     const x = 7;
     const y = 6 + 1;
     const z = 14 / 2;
     // reflexive
-    assert(op.eq(x, x), "reflexive");
+    assert(equal(x, x), "reflexive");
     // symmetric
-    assert(op.eq(x, y) && op.eq(y, x), "symmetric");
+    assert(equal(x, y) && equal(y, x), "symmetric");
     // transitive
-    assert(op.eq(x, y) && op.eq(y, z) && op.eq(x, z), "transitive");
-    // boolean inverses
-    assertStrictEquals(op.eq(x, x), !op.ne(x, x), "equal vs. not-equal");
-    assertStrictEquals(
-        op.lt(x, x),
-        !op.ge(x, x),
-        "less than vs. greater than or equal",
-    );
-    assertStrictEquals(
-        op.le(x, x),
-        !op.gt(x, x),
-        "less than or equal vs. greater than",
-    );
+    assert(equal(x, y) && equal(y, z) && equal(x, z), "transitive");
 });
 
 Deno.test("sum", function () {
+    const { sum } = op;
     // associative
-    assertStrictEquals(op.sum(1, 2, 3), op.sum(3, 2, 1), "associative");
+    assertStrictEquals(sum(1, 2, 3), sum(3, 2, 1), "associative");
     // identity
-    assertStrictEquals(op.sum(7), 7, "identity");
+    assertStrictEquals(sum(7), 7, "identity");
 });
 
 Deno.test("product", function () {
+    const { product } = op;
     // associative
-    assertStrictEquals(op.product(2, 3, 4), op.product(4, 3, 2), "associative");
+    assertStrictEquals(product(2, 3, 4), product(4, 3, 2), "associative");
     // identity
-    assertStrictEquals(op.product(7), 7, "identity");
+    assertStrictEquals(product(7), 7, "identity");
 });
 
 Deno.test("floating point imprecision", function () {
+    const { add, sub, equal } = op;
     const x = 0.1;
     const y = 0.3;
     const z = 0.4;
-    assert(op.eq(op.add(x, y), z) && op.ne(op.sub(z, y), x), "non-reflexive");
-    assert(op.ne(NaN, NaN), "not a number");
+    assert(equal(add(x, y), z) && !equal(sub(z, y), x), "non-reflexive");
+    assert(!equal(NaN, NaN), "not a number");
 });
