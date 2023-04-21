@@ -1,7 +1,7 @@
 # Luka
 
-A JavaScript module providing functional replacements for a handful of
-arithmetic operations.
+Module `luka` provide functional replacements for a handful of infix
+arithmetic operations: [ `+`, `-`, `*`, `/`, `**`, `%`, `===`].
 
 ## Background
 
