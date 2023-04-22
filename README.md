@@ -3,7 +3,7 @@
 Module `luka.js` provides functional replacements for a handful of infix
 arithmetic operations: 
 
-- [ `+`, `-`, `*`, `/`, `**`, `%`, `===`].
+[ `+`, `-`, `*`, `/`, `**`, `%`, `===`].
 
 ## Background
 
