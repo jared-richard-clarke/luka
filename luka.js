@@ -40,7 +40,7 @@ op.product = monoid((x, y) => x * y, 1);
  * Module `luka.js` provides functional replacements
  * for a handful of infix arithmetic operations:
  *
- * - [ `+`, `-`, `*`, `/`, `**`, `%`, `===`].
+ * [ `+`, `-`, `*`, `/`, `**`, `%`, `===`].
  *
  * @example
  * ```js
