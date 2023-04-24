@@ -1,9 +1,8 @@
 # Luka
 
-Module `luka.js` provides functional replacements for a handful of infix
-arithmetic operations: 
+Module `luka.js` provides functional replacements for a handful of infix operations: 
 
-[ `+`, `-`, `*`, `/`, `**`, `%`, `===`].
+[ `+`, `-`, `*`, `/`, `**`, `%`, `===`, `!==`, `<`, `<=`, `>`, `>=`].
 
 ## Background
 
@@ -27,16 +26,23 @@ JavaScript functions evaluate their arguments inward to outward precisely when t
 ```js
 import op from "./luka.js";
 
-// Binary Operations
+// Binary Arithmetic Operations
 const addition         = op.add(1, 6) // -------->     7
 const subtraction      = op.sub(8, 1) // -------->     7
 const multiplication   = op.mul(2, 7) // -------->    14
 const division         = op.div(14, 2) // ------->     7
 const exponent         = op.exp(2, 7) // -------->   128
 const remainder        = op.rem(15, 7) // ------->     1
-const equality         = op.equal(7, 7) // ------>  true
 
-// Folding Operations
+// Binary Comparison Operations
+const equal            = op.eq(7, 7) // --------->  true
+const not_equal        = op.ne(7, 7) // ---------> false
+const lesser           = op.lt(7, 11) // -------->  true
+const lesser_equal     = op.le(7, 11) // -------->  true
+const greater          = op.gt(7, 11) // --------> false
+const greater_equal    = op.ge(7, 11) // --------> false
+
+// Folding Arithmetic Operations
 const sum              = op.sum(1, 2, 3) // ----->     6
 const sum_id           = op.sum() // ------------>     0
 const product          = op.product(2, 2, 2) // ->     8
