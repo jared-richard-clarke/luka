@@ -39,7 +39,7 @@ op.le = binary((x, y) => x <= y);
 op.gt = binary((x, y) => x > y);
 op.ge = binary((x, y) => x >= y);
 
-// Folding Operations
+// Folding Arithmetic Operations
 op.sum = monoid((x, y) => x + y, 0);
 op.product = monoid((x, y) => x * y, 1);
 
