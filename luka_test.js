@@ -59,16 +59,30 @@ Deno.test("remainder", function () {
 });
 
 Deno.test("equality", function () {
-    const { equal } = op;
+    const { eq, ne } = op;
     const x = 7;
     const y = 6 + 1;
     const z = 14 / 2;
     // reflexive
-    assert(equal(x, x), "reflexive");
+    assert(eq(x, x), "reflexive");
     // symmetric
-    assert(equal(x, y) && equal(y, x), "symmetric");
+    assert(eq(x, y) && eq(y, x), "symmetric");
     // transitive
-    assert(equal(x, y) && equal(y, z) && equal(x, z), "transitive");
+    assert(eq(x, y) && eq(y, z) && eq(x, z), "transitive");
+    // inverse
+    assert(eq(x, y) && !ne(x, y), "inverse");
+});
+
+Deno.test("ordering", function () {
+    const { eq, lt, le, gt, ge } = op;
+    const x = 7;
+    const y = 11;
+    // duality
+    assert(lt(x, y) && gt(y, x), "duality");
+    // lesser equal
+    assert(le(x, y) && (lt(x, y) || eq(x, y)), "lesser equal");
+    // greater equal
+    assert(ge(x, x) && (gt(x, x) || eq(x, x)), "greater equal");
 });
 
 Deno.test("sum", function () {
@@ -88,10 +102,10 @@ Deno.test("product", function () {
 });
 
 Deno.test("floating point imprecision", function () {
-    const { add, sub, equal } = op;
+    const { add, sub, eq } = op;
     const x = 0.1;
     const y = 0.3;
     const z = 0.4;
-    assert(equal(add(x, y), z) && !equal(sub(z, y), x), "non-reflexive");
-    assert(!equal(NaN, NaN), "not a number");
+    assert(eq(add(x, y), z) && !eq(sub(z, y), x), "non-reflexive");
+    assert(!eq(NaN, NaN), "not a number");
 });
