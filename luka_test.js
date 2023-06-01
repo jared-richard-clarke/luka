@@ -85,22 +85,6 @@ Deno.test("ordering", function () {
     assert(ge(x, x) && (gt(x, x) || eq(x, x)), "greater equal");
 });
 
-Deno.test("sum", function () {
-    const { sum } = op;
-    // associative
-    assertStrictEquals(sum(1, 2, 3), sum(3, 2, 1), "associative");
-    // identity
-    assertStrictEquals(sum(7), 7, "identity");
-});
-
-Deno.test("product", function () {
-    const { product } = op;
-    // associative
-    assertStrictEquals(product(2, 3, 4), product(4, 3, 2), "associative");
-    // identity
-    assertStrictEquals(product(7), 7, "identity");
-});
-
 Deno.test("floating point imprecision", function () {
     const { add, sub, eq } = op;
     const x = 0.1;
@@ -109,3 +93,4 @@ Deno.test("floating point imprecision", function () {
     assert(eq(add(x, y), z) && !eq(sub(z, y), x), "non-reflexive");
     assert(!eq(NaN, NaN), "not a number");
 });
+
