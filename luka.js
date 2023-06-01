@@ -6,9 +6,21 @@ function binary(operation) {
 }
 
 // Factory function that produces folding functions
+// with variable arity — in this case semigroups.
+// A semigroup is a set with an associative
+// binary operation.
+function semigroup(operation) {
+    return Object.freeze(function (...xs) {
+        return xs.reduce(
+            (total, x) => operation(total, x),
+        );
+    });
+}
+
+// Factory function that produces folding functions
 // with variable arity — in this case, monoids.
 // A monoid is a set equipped with an associative
-// binary operation and an identity element.
+// binary operation AND an identity element.
 function monoid(operation, identity) {
     return Object.freeze(function (...operands) {
         return operands.reduce(
@@ -24,10 +36,10 @@ function monoid(operation, identity) {
 const op = Object.create(null);
 
 // Binary Operations
-op.add = binary((x, y) => x + y);
-op.sub = binary((x, y) => x - y);
-op.mul = binary((x, y) => x * y);
-op.div = binary((x, y) => x / y);
+op.add = monoid((x, y) => x + y, 0);
+op.sub = semigroup((x, y) => x - y);
+op.mul = monoid((x, y) => x * y, 1);
+op.div = semigroup((x, y) => x / y);
 op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 
@@ -38,10 +50,6 @@ op.lt = binary((x, y) => x < y);
 op.le = binary((x, y) => x <= y);
 op.gt = binary((x, y) => x > y);
 op.ge = binary((x, y) => x >= y);
-
-// Folding Arithmetic Operations
-op.sum = monoid((x, y) => x + y, 0);
-op.product = monoid((x, y) => x * y, 1);
 
 /**
  * Module `luka.js` provides functional replacements
@@ -68,12 +76,7 @@ op.product = monoid((x, y) => x * y, 1);
  * const lesser_equal     = op.le(7, 11) // -------->  true
  * const greater          = op.gt(7, 11) // --------> false
  * const greater_equal    = op.ge(7, 11) // --------> false
- *
- * // Folding Arithmetic Operations
- * const sum              = op.sum(1, 2, 3) // ----->     6
- * const sum_id           = op.sum() // ------------>     0
- * const product          = op.product(2, 2, 2) // ->     8
- * const product_id       = op.product() // -------->     1
  * ```
  */
 export default Object.freeze(op);
+
