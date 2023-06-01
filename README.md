@@ -41,10 +41,4 @@ const lesser           = op.lt(7, 11) // -------->  true
 const lesser_equal     = op.le(7, 11) // -------->  true
 const greater          = op.gt(7, 11) // --------> false
 const greater_equal    = op.ge(7, 11) // --------> false
-
-// Folding Arithmetic Operations
-const sum              = op.sum(1, 2, 3) // ----->     6
-const sum_id           = op.sum() // ------------>     0
-const product          = op.product(2, 2, 2) // ->     8
-const product_id       = op.product() // -------->     1
 ```
