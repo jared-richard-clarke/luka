@@ -40,7 +40,7 @@ const sum_id           = op.add(); // ------------->   0
 const product          = op.mul(2, 4, 8, 10); // --> 640
 const product_id       = op.mul(); // ------------->   1
 
-// Semigroup Operations
+// Folding Operations
 const difference       = op.sub(10, 5, 5); // ----->   0
 const quotient         = op.div(1000, 10, 10); // ->  10
 ```
