@@ -1,7 +1,7 @@
 import {
     assert,
     assertStrictEquals,
-} from "https://deno.land/std@0.180.0/testing/asserts.ts";
+} from "https://deno.land/std@0.190.0/testing/asserts.ts";
 import op from "./luka.js";
 
 Deno.test("addition", function () {
@@ -58,54 +58,30 @@ Deno.test("remainder", function () {
     assertStrictEquals(rem(-11, 5), -1, "negative dividend");
 });
 
-Deno.test("equality", function () {
-    const { eq, ne } = op;
-    const x = 7;
-    const y = 6 + 1;
-    const z = 14 / 2;
-    // reflexive
-    assert(eq(x, x), "reflexive");
-    // symmetric
-    assert(eq(x, y) && eq(y, x), "symmetric");
-    // transitive
-    assert(eq(x, y) && eq(y, z) && eq(x, z), "transitive");
-    // inverse
-    assert(eq(x, y) && !ne(x, y), "inverse");
+Deno.test("monoid", function () {
+    const { add, mul } = op;
+    // add fold
+    assertStrictEquals(add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 55, "add fold");
+    // add identity
+    assertStrictEquals(add(), 0, "add identity");
+    // multiply fold
+    assertStrictEquals(mul(10, 10, 10), 1000, "multiply fold");
+    // multiply identity
+    assertStrictEquals(mul(), 1, "multiply identity");
 });
 
-Deno.test("ordering", function () {
-    const { eq, lt, le, gt, ge } = op;
-    const x = 7;
-    const y = 11;
-    // duality
-    assert(lt(x, y) && gt(y, x), "duality");
-    // lesser equal
-    assert(le(x, y) && (lt(x, y) || eq(x, y)), "lesser equal");
-    // greater equal
-    assert(ge(x, x) && (gt(x, x) || eq(x, x)), "greater equal");
-});
-
-Deno.test("sum", function () {
-    const { sum } = op;
-    // associative
-    assertStrictEquals(sum(1, 2, 3), sum(3, 2, 1), "associative");
-    // identity
-    assertStrictEquals(sum(7), 7, "identity");
-});
-
-Deno.test("product", function () {
-    const { product } = op;
-    // associative
-    assertStrictEquals(product(2, 3, 4), product(4, 3, 2), "associative");
-    // identity
-    assertStrictEquals(product(7), 7, "identity");
+Deno.test("foldable", function () {
+    const { sub, div } = op;
+    // subtract fold
+    assertStrictEquals(sub(55, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0, "subtract fold");
+    // divide fold
+    assertStrictEquals(div(1000, 10, 10), 10, "divide fold");
 });
 
 Deno.test("floating point imprecision", function () {
-    const { add, sub, eq } = op;
+    const { add, sub } = op;
     const x = 0.1;
     const y = 0.3;
     const z = 0.4;
-    assert(eq(add(x, y), z) && !eq(sub(z, y), x), "non-reflexive");
-    assert(!eq(NaN, NaN), "not a number");
+    assert(add(x, y) === z && !(sub(z, y) === x), "non-reflexive");
 });
