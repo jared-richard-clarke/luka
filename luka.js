@@ -5,9 +5,8 @@ function binary(operation) {
     });
 }
 
-// Factory function that produces folding functions with variable arity — in this case semigroups.
-// A semigroup is a set with an associative binary operation.
-function semigroup(operation) {
+// Factory function that produces folding functions with variable arity.
+function fold(operation) {
     return Object.freeze(function (...xs) {
         return xs.reduce(
             (total, x) => operation(total, x),
@@ -16,11 +15,11 @@ function semigroup(operation) {
 }
 
 // Factory function that produces folding functions with variable arity — in this case, monoids.
-// A monoid is a set equipped with an associative binary operation AND an identity element.
+// A monoid is a set equipped with an associative binary operation and an identity element.
 function monoid(operation, identity) {
-    return Object.freeze(function (...operands) {
-        return operands.reduce(
-            (total, operand) => operation(total, operand),
+    return Object.freeze(function (...xs) {
+        return xs.reduce(
+            (total, x) => operation(total, x),
             identity,
         );
     });
@@ -32,9 +31,9 @@ const op = Object.create(null);
 
 // Binary Operations
 op.add = monoid((x, y) => x + y, 0);
-op.sub = semigroup((x, y) => x - y);
+op.sub = fold((x, y) => x - y);
 op.mul = monoid((x, y) => x * y, 1);
-op.div = semigroup((x, y) => x / y);
+op.div = fold((x, y) => x / y);
 op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 
@@ -61,7 +60,7 @@ op.rem = binary((x, y) => x % y);
  * const product          = op.mul(2, 4, 8, 10); // --> 640
  * const product_id       = op.mul(); // ------------->   1
  *
- * // Semigroup Operations
+ * // Folding Operations
  * const difference       = op.sub(10, 5, 5); // ----->   0
  * const quotient         = op.div(1000, 10, 10); // ->  10
  * ```
