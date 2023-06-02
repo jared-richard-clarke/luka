@@ -1,12 +1,12 @@
-// Factory function that produces binary functions.
+// Produces binary functions.
 function binary(operation) {
     return Object.freeze(function (x, y) {
         return operation(x, y);
     });
 }
 
-// Factory function that produces folding functions with variable arity.
-function fold(operation) {
+// Produces functions that can fold a set into a summary value.
+function foldable(operation) {
     return Object.freeze(function (...xs) {
         return xs.reduce(
             (total, x) => operation(total, x),
@@ -14,7 +14,7 @@ function fold(operation) {
     });
 }
 
-// Factory function that produces folding functions with variable arity — in this case, monoids.
+// Produces functions that can fold a set into a summary value — in this case, monoids.
 // A monoid is a set equipped with an associative binary operation and an identity element.
 function monoid(operation, identity) {
     return Object.freeze(function (...xs) {
@@ -31,9 +31,9 @@ const op = Object.create(null);
 
 // Binary Operations
 op.add = monoid((x, y) => x + y, 0);
-op.sub = fold((x, y) => x - y);
+op.sub = foldable((x, y) => x - y);
 op.mul = monoid((x, y) => x * y, 1);
-op.div = fold((x, y) => x / y);
+op.div = foldable((x, y) => x / y);
 op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 
