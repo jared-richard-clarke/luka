@@ -1,7 +1,7 @@
 import {
     assert,
     assertStrictEquals,
-} from "https://deno.land/std@0.180.0/testing/asserts.ts";
+} from "https://deno.land/std@0.190.0/testing/asserts.ts";
 import op from "./luka.js";
 
 Deno.test("addition", function () {
@@ -70,7 +70,7 @@ Deno.test("monoid", function () {
     assertStrictEquals(mul(), 1, "multiply identity");
 });
 
-Deno.test("semigroup", function () {
+Deno.test("foldable", function () {
     const { sub, div } = op;
     // subtract fold
     assertStrictEquals(sub(55, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0, "subtract fold");
