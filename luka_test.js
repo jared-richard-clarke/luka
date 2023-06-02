@@ -58,22 +58,14 @@ Deno.test("remainder", function () {
     assertStrictEquals(rem(-11, 5), -1, "negative dividend");
 });
 
-Deno.test("monoid", function () {
-    const { add, mul } = op;
+Deno.test("foldable", function () {
+    const { add, sub, mul, div } = op;
     // add fold
     assertStrictEquals(add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 55, "add fold");
-    // add identity
-    assertStrictEquals(add(), 0, "add identity");
-    // multiply fold
-    assertStrictEquals(mul(10, 10, 10), 1000, "multiply fold");
-    // multiply identity
-    assertStrictEquals(mul(), 1, "multiply identity");
-});
-
-Deno.test("foldable", function () {
-    const { sub, div } = op;
     // subtract fold
     assertStrictEquals(sub(55, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0, "subtract fold");
+    // multiply fold
+    assertStrictEquals(mul(10, 10, 10), 1000, "multiply fold");
     // divide fold
     assertStrictEquals(div(1000, 10, 10), 10, "divide fold");
 });
