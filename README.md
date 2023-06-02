@@ -34,13 +34,9 @@ const division         = op.div(14, 2); // -------->   7
 const exponent         = op.exp(2, 7); // ---------> 128
 const remainder        = op.rem(15, 7); // -------->   1
 
-// Monoid Operations
-const sum              = op.add(1, 2, 3); // ------>   6
-const sum_id           = op.add(); // ------------->   0
-const product          = op.mul(2, 4, 8, 10); // --> 640
-const product_id       = op.mul(); // ------------->   1
-
 // Folding Operations
+const sum              = op.add(1, 2, 3); // ------>   6
+const product          = op.mul(2, 4, 8, 10); // --> 640
 const difference       = op.sub(10, 5, 5); // ----->   0
 const quotient         = op.div(1000, 10, 10); // ->  10
 ```
