@@ -1,3 +1,13 @@
+// Constants
+const ZERO = 0;
+
+// Produces unary functions.
+function unary(operation) {
+    return Object.freeze(function (x) {
+        return operation(x);
+    });
+}
+
 // Produces binary functions.
 function binary(operation) {
     return Object.freeze(function (x, y) {
@@ -18,10 +28,20 @@ function foldable(operation) {
 // prevents namespace pollution from inherited objects.
 const op = Object.create(null);
 
+// Unary Operations
+// If "x" is 0, "-x" will return -0.
+op.neg = unary((x) => ZERO - x);
 // Binary Operations
 op.add = foldable((x, y) => x + y);
 op.sub = foldable((x, y) => x - y);
-op.mul = foldable((x, y) => x * y);
+op.mul = foldable((x, y) => {
+    const product = x * y;
+    // In JavaScript, 0 and -0 are strictly equal.
+    if (product === ZERO) {
+        return Math.abs(product);
+    }
+    return product;
+});
 op.div = foldable((x, y) => x / y);
 op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
@@ -36,6 +56,9 @@ op.rem = binary((x, y) => x % y);
  * ```js
  * import op from "./luka.js";
  *
+ * // Unary Operations
+ * const negation         = op.neg(7); // ------------>  -7
+ * 
  * // Binary Operations
  * const addition         = op.add(1, 6); // --------->   7
  * const subtraction      = op.sub(8, 1); // --------->   7
