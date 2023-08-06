@@ -1,6 +1,6 @@
 # Luka
 
-Module `luka.js` provides functional replacements for a handful of infix operations:
+Module `luka.js` provides functional replacements for a handful of arithmetic operations:
 
 [ `+`, `-`, `*`, `/`, `**`, `%`].
 
@@ -25,6 +25,9 @@ JavaScript functions evaluate their arguments inward to outward precisely when t
 
 ```js
 import op from "./luka.js";
+
+// Unary Operations
+const negation         = op.neg(7); // ------------>  -7
 
 // Binary Operations
 const addition         = op.add(1, 6); // --------->   7
