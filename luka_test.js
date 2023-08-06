@@ -4,6 +4,14 @@ import {
 } from "https://deno.land/std@0.190.0/testing/asserts.ts";
 import op from "./luka.js";
 
+Deno.test("negation", function() {
+    const { neg } = op;
+    // double negation: --x = x
+    assertStrictEquals(neg(neg(7)), 7, "double negation");
+    // In JavaScript, if x is 0, -x returns -0.
+    assertStrictEquals(neg(0), 0, "negative zero");
+});
+
 Deno.test("addition", function () {
     const { add } = op;
     // commutative: x + y = y + x
@@ -34,6 +42,8 @@ Deno.test("multiplication", function () {
     assertStrictEquals(mul(2, 7 + 11), mul(2, 7) + mul(2, 11), "distributive");
     // identity: x * 1 = x
     assertStrictEquals(mul(7, 1), 7, "identity");
+    // JavaScript will return -0 if we multiply 0 by a negative number.
+    assertStrictEquals(mul(-1, 0), 0, "negative zero");
 });
 
 Deno.test("division", function () {
