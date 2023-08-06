@@ -47,8 +47,8 @@ op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 
 /**
- * Module `luka.js` provides functional replacements for a handful 
- * of infix, arithmetic operations:
+ * Module `luka.js` provides functional replacements 
+ * for a handful of arithmetic operations:
  *
  * [ `+`, `-`, `*`, `/`, `**`, `%`].
  *
