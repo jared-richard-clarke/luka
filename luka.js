@@ -39,14 +39,18 @@ op.neg = unary((x) => ZERO - x);
 // Binary Operations
 op.add = foldable((x, y) => x + y);
 op.sub = foldable((x, y) => x - y);
-// Prevent -0 from poisoning result.
 op.mul = foldable((x, y) => {
     if (is_zero(x) || is_zero(y)) {
         return ZERO;
     }
     return x * y;
 });
-op.div = foldable((x, y) => x / y);
+op.div = foldable((x, y) => {
+    if (is_zero(x)) {
+        return ZERO;
+    }
+    return x / y;
+});
 op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 
