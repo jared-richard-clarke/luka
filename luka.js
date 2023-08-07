@@ -49,6 +49,9 @@ op.div = foldable((x, y) => {
     if (is_zero(x)) {
         return ZERO;
     }
+    if (is_zero(y)) {
+        return undefined;
+    }
     return x / y;
 });
 op.exp = binary((x, y) => Math.pow(x, y));
