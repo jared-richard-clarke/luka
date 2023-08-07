@@ -1,6 +1,11 @@
 // Constants
 const ZERO = 0;
 
+// Checks if x = 0.
+function is_zero(x) {
+    return x === ZERO;
+}
+
 // Produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
@@ -29,25 +34,24 @@ function foldable(operation) {
 const op = Object.create(null);
 
 // Unary Operations
-// If "x" is 0, "-x" will return -0.
+// If "x" is 0, "-x" will return -0. Subtracting "x" from 0 will prevent this.
 op.neg = unary((x) => ZERO - x);
 // Binary Operations
 op.add = foldable((x, y) => x + y);
 op.sub = foldable((x, y) => x - y);
+// Prevent -0 from poisoning result.
 op.mul = foldable((x, y) => {
-    const product = x * y;
-    // In JavaScript, 0 and -0 are strictly equal.
-    if (product === ZERO) {
-        return Math.abs(product);
+    if (is_zero(x) || is_zero(y)) {
+        return ZERO;
     }
-    return product;
+    return x * y;
 });
 op.div = foldable((x, y) => x / y);
 op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 
 /**
- * Module `luka.js` provides functional replacements 
+ * Module `luka.js` provides functional replacements
  * for a handful of arithmetic operations:
  *
  * [ `+`, `-`, `*`, `/`, `**`, `%`].
