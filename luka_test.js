@@ -4,7 +4,7 @@ import {
 } from "https://deno.land/std@0.190.0/testing/asserts.ts";
 import op from "./luka.js";
 
-Deno.test("negation", function() {
+Deno.test("negation", function () {
     const { neg } = op;
     // double negation: --x = x
     assertStrictEquals(neg(neg(7)), 7, "double negation");
@@ -43,7 +43,7 @@ Deno.test("multiplication", function () {
     // identity: x * 1 = x
     assertStrictEquals(mul(7, 1), 7, "identity");
     // JavaScript will return -0 if we multiply 0 by a negative number.
-    assertStrictEquals(mul(-1, 0), 0, "negative zero");
+    assertStrictEquals(mul(-1, 0), -0, "negative zero");
 });
 
 Deno.test("division", function () {
@@ -73,7 +73,11 @@ Deno.test("foldable", function () {
     // add fold
     assertStrictEquals(add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 55, "add fold");
     // subtract fold
-    assertStrictEquals(sub(55, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0, "subtract fold");
+    assertStrictEquals(
+        sub(55, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+        0,
+        "subtract fold",
+    );
     // multiply fold
     assertStrictEquals(mul(10, 10, 10), 1000, "multiply fold");
     // divide fold
