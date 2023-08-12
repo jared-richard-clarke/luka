@@ -1,11 +1,3 @@
-// Constants
-const ZERO = 0;
-
-// Checks if x = 0.
-function is_zero(x) {
-    return x === ZERO;
-}
-
 // Produces unary functions.
 function unary(operation) {
     return Object.freeze(function (x) {
@@ -29,31 +21,17 @@ function foldable(operation) {
     });
 }
 
-// "op" acts as namespace for arithmetic functions. Its null prototype 
+// "op" acts as namespace for arithmetic functions. Its null prototype
 // prevents namespace pollution from inherited objects.
 const op = Object.create(null);
 
 // Unary Operations
-// If "x" is 0, "-x" will return -0. Subtracting "x" from 0 will prevent this.
-op.neg = unary((x) => ZERO - x);
+op.neg = unary((x) => 0 - x);
 // Binary Operations
 op.add = foldable((x, y) => x + y);
 op.sub = foldable((x, y) => x - y);
-op.mul = foldable((x, y) => {
-    if (is_zero(x) || is_zero(y)) {
-        return ZERO;
-    }
-    return x * y;
-});
-op.div = foldable((x, y) => {
-    if (is_zero(x)) {
-        return ZERO;
-    }
-    if (is_zero(y)) {
-        return undefined;
-    }
-    return x / y;
-});
+op.mul = foldable((x, y) => x * y);
+op.div = foldable((x, y) => x / y);
 op.exp = binary((x, y) => Math.pow(x, y));
 op.rem = binary((x, y) => x % y);
 
@@ -69,7 +47,7 @@ op.rem = binary((x, y) => x % y);
  *
  * // Unary Operations
  * const negation         = op.neg(7); // ------------>  -7
- * 
+ *
  * // Binary Operations
  * const addition         = op.add(1, 6); // --------->   7
  * const subtraction      = op.sub(8, 1); // --------->   7
